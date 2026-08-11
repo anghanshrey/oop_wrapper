@@ -294,11 +294,6 @@ while True:
             print(f"Manager is a subclass of Employee   : {issubclass(Manager, Employee)}")
             print(f"Developer is a subclass of Manager  : {issubclass(Developer, Manager)}")
             print(f"Developer is a subclass of Employee : {issubclass(Developer, Employee)}")
-
-            print("\n===== Deleting Records =====")
-            for var_name in ("emp1", "emp2", "emp3"):
-                if var_name in locals():
-                    del locals()[var_name]
  
             print("\nThank you for using the Employee Management System. Goodbye!")
             break
