@@ -1,27 +1,42 @@
+person = []
 employees = []
 managers = []
 Developers = []
 
+class Person:
 
-class Employee:# Class
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+        if type(self) is Person:
+            person.append({
+                "Person Name" : self.name,
+                "Person age" : self.age
+            })
+
+    def display(self):
+        print(f"\nPerson Name : {self.name}\nAge: {self.age}")
+    
+class Employee(Person):# Class
     # Constrator
     def __init__(self , employee_id, name, age, salary):
 
+        super().__init__(name,age)
         self.__employee_id = employee_id
-        self.name = name
-        self.age = age
         self.__salary = salary
 
         if type(self) is Employee:
             employees.append({
                 "Employee ID" : self.__employee_id,
-                "Employee Name" : self.name,
-                "Employee Age" : self.age,
+                "Employee Name" : name,
+                "Employee Age" : age,
                 "Employee Salary" : self.__salary
             })
 
     def display(self):
-        print(f"\nEmployee Name : {self.name}\nAge : {self.age}\nEmoplyee_ID : {self.__employee_id}\nSalary: ${self.__salary}")
+        super().display()
+        print(f"Emoplyee_ID : {self.__employee_id}\nSalary: ${self.__salary}")
 
     # Setter
     def set_emp_id(self , set_id):
@@ -116,13 +131,30 @@ while True:
     print("\n 1. Create a Person ")
     print(" 2. Create an Employee ")
     print(" 3. Create a Manager ")
-    print(" 4. Show Details ")
-    print(" 5. Exit ")
+    print(" 4. Create a Developer ")
+    print(" 5. Show Details ")
+    print(" 6. Exit ")
 
     choice = int(input("\nEnter your choice:  "))
 
     match choice:
-        case 1 :
+        case 1:
+            name = input("Enter Person Name : ")
+            age = int(input("Enter Person Age : "))
+            per1 = Person(name , age)
+            while True:
+                print("\n 1. Display")
+                print(" 2. Exit")
+                choice_per = int(input("\n Enter Your choice : "))
+
+                if choice_per == 1:
+                    per1.display()
+                elif choice_per == 2:
+                    print("\n Main menu")
+                    break
+                else:
+                    print("Enter Only 1 and 2 Number:")
+        case 2 :
             employee_id = int(input("\nEnter Employee ID : "))
             name = input("Enter Employee Name : ")
             age = int(input("Enter Employee Age : "))
@@ -166,7 +198,7 @@ while True:
                 else:
                     print("Enter Only 1 to 4 Number")
                     
-        case 2 :
+        case 3 :
             employee_id = int(input("\nEnter Employee ID : "))
             name = input("Enter Employee Name : ")
             age = int(input("Enter Employee Age : "))
@@ -212,7 +244,7 @@ while True:
                 else:
                     print("\n Enter Only 1 to 4 Numbers.")
             
-        case 3 :
+        case 4 :
             employee_id = int(input("\nEnter Employee ID : "))
             name = input("Enter Employee Name : ")
             age = int(input("Enter Employee Age : "))
@@ -258,35 +290,40 @@ while True:
                 else:
                     print("\n Enter Only 1 to 4 Numbers.")
 
-        case 4 :
+        case 5 :
             while True:
                 print("\nChoose Details to show:")
 
-                print("\n 1. Employee ")
-                print(" 2. Manager ")
-                print(" 3. Developer ")
-                print(" 4. Exit ")
+                print("\n 1. Personc")
+                print(" 2. Employee ")
+                print(" 3. Manager ")
+                print(" 4. Developer ")
+                print(" 5. Exit ")
 
                 choice_4 = int(input("Enter Your Choice : "))
                 match choice_4:
                     case 1:
                         if choice_4 == 1:
-                            print("\n Employee Details :")
-                            Show_Details(employees)
+                            print("\n Person Details :")
+                            Show_Details(person)
                     case 2:
                         if choice_4 == 2:
-                            print("\n Manager Details :")
-                            Show_Details(managers)
+                            print("\n Employee Details :")
+                            Show_Details(employees)
                     case 3:
                         if choice_4 == 3:
+                            print("\n Manager Details :")
+                            Show_Details(managers)
+                    case 4:
+                        if choice_4 == 4:
                             print("\n Developers Details :")
                             Show_Details(Developers)
-                    case 4:
+                    case 5:
                         print("Main Menu")
                         break
                     case _:
-                        print("Enter Only 1 to 4 Numbers.")
-        case 5 :
+                        print("Enter Only 1 to 5 Numbers.")
+        case 6 :
             print(" Exit ")
  
             # issubclass() checks the relationship between CLASSES (not objects)
@@ -298,6 +335,6 @@ while True:
             print("\nThank you for using the Employee Management System. Goodbye!")
             break
         case _:
-            print("Enter Only 1 To 5 Number. ")
+            print("Enter Only 1 To 6 Number. ")
 
     
